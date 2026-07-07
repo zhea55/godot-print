@@ -372,9 +372,10 @@ function executePrint(editor: vscode.TextEditor, config: ExtensionConfig): void 
         }
 
         // Mode 2: if no assignments found, use selected text directly
+        // Split by newlines and commas so `heroPos.X, heroPos.Y` becomes two expressions
         if (variables.length === 0) {
             variables = selectedText
-                .split("\n")
+                .split(/[\n,]+/)
                 .map((l) => l.trim())
                 .filter((l) => l.length > 0);
         }
