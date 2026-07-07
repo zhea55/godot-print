@@ -2,7 +2,7 @@
   "name": "godot-print",
   "displayName": "Godot Print",
   "description": "Quickly insert debug print statements for selected variables — supports both GDScript and C#.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "license": "MIT",
   "icon": "icon.png",
   "publisher": "zhea55",
