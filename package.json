@@ -63,10 +63,11 @@
     ]
   },
   "scripts": {
-    "vscode:prepublish": "npm run compile",
+    "vscode:prepublish": "npm run build",
+    "build": "esbuild source/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node --minify",
     "compile": "tsc -p ./tsconfig.json",
-    "watch": "tsc --watch -p ./tsconfig.json",
-    "package": "vsce package",
+    "watch": "esbuild source/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node --sourcemap --watch",
+    "package": "vsce package --out dist/",
     "lint": "biome check source/",
     "format": "biome check --write source/",
     "check-ci": "biome ci source/"
@@ -75,6 +76,7 @@
     "@biomejs/biome": "2.5.2",
     "@types/vscode": "^1.80.0",
     "@vscode/vsce": "^3.0.0",
+    "esbuild": "^0.28.1",
     "typescript": "^5.0.0"
   },
   "repository": {

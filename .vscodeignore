@@ -12,3 +12,8 @@ node_modules/
 source/
 images/
 .codebase-memory/
+.gitignore
+biome.json
+.serena/
+test-files/
+package-lock.json
