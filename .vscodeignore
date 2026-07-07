@@ -1,0 +1,14 @@
+.codegraph
+.omo/
+.vscode-test/
+.git/
+.github/
+*.map
+**/*.ts
+**/*.ts.map
+tsconfig.json
+bun.lock
+node_modules/
+source/
+images/
+.codebase-memory/

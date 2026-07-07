@@ -1,0 +1,93 @@
+{
+  "name": "godot-print",
+  "displayName": "Godot Print",
+  "description": "Quickly insert debug print statements for selected variables — supports both GDScript and C#.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "main": "./dist/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Godot Print",
+      "properties": {
+        "godot-print.printTemplate.gdscript": {
+          "type": "string",
+          "default": "print(\"[{className}] {body}\")",
+          "description": "Template for GDScript print statements. Placeholders: {className}, {body}",
+          "examples": [
+            "print(\"[{className}] {body}\")",
+            "push_error(\"[{className}] {body}\")"
+          ]
+        },
+        "godot-print.printTemplate.csharp": {
+          "type": "string",
+          "default": "Godot.GD.Print($\"[{className}] {body}\");",
+          "description": "Template for C# print statements. Placeholders: {className}, {body}",
+          "examples": [
+            "Godot.GD.Print($\"[{className}] {body}\");",
+            "GD.Print($\"[{className}] {body}\")"
+          ]
+        },
+        "godot-print.expandVectors": {
+          "type": "boolean",
+          "default": true,
+          "description": "When enabled, expands Vector2/3/4 and Color variables to their components (e.g., inputDir → inputDir.X, inputDir.Y in C#)"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "godot-print.print",
+        "title": "Godot Print: Insert Debug Print"
+      },
+      {
+        "command": "godot-print.clean",
+        "title": "Godot Print: Remove Debug Prints"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "godot-print.print",
+        "key": "ctrl+alt+d",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "godot-print.clean",
+        "key": "ctrl+alt+c",
+        "when": "editorTextFocus"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./tsconfig.json",
+    "watch": "tsc --watch -p ./tsconfig.json",
+    "package": "vsce package --baseImagesUrl https://example.com",
+    "lint": "biome check source/",
+    "format": "biome check --write source/",
+    "check-ci": "biome ci source/"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.2",
+    "@types/vscode": "^1.80.0",
+    "@vscode/vsce": "^3.0.0",
+    "typescript": "^5.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "categories": [
+    "Debuggers",
+    "Programming Languages"
+  ],
+  "keywords": [
+    "godot",
+    "csharp",
+    "debug",
+    "print",
+    "gdscript"
+  ]
+}
