@@ -4,6 +4,7 @@
   "description": "Quickly insert debug print statements for selected variables — supports both GDScript and C#.",
   "version": "0.1.0",
   "license": "MIT",
+  "publisher": "zhea55",
   "engines": {
     "vscode": "^1.80.0"
   },
