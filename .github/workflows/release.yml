@@ -1,0 +1,29 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - run: npm ci
+
+      - name: Package VSIX
+        run: npm run package
+
+      - name: Upload to Release
+        run: gh release upload "${{ github.ref_name }}" dist/*.vsix --clobber
+        env:
+          GH_TOKEN: ${{ github.GITHUB_TOKEN }}
